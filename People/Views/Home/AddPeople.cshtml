@@ -1,0 +1,16 @@
+﻿<form method="post" action="/home/addmorepeople" class="col-md-8 col-md-offset-2 well">
+    <div id="people">
+        <input id="fname" type="text" name="people[0].firstname" class="form-control" placeholder="First Name" />
+        <input id="lname" type="text" name="people[0].lastname" class="form-control" placeholder="Last Name" />
+        <input id="age" type="text" name="people[0].age" class="form-control" placeholder="Age" />
+    </div>
+    <div>
+        <button class="btn btn-success">Submit</button>
+        <button type="button" id="add-people" class="btn btn-info">Add another person</button>
+    </div>
+
+</form>
+@section Scripts
+{
+    <script src="~/js/People.js"></script>
+}

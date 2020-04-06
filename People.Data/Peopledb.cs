@@ -28,13 +28,31 @@ namespace People.Data
                         FirstName = (string)reader["FirstName"],
                         LastName = (string)reader["LastName"],
                         Age = (int)reader["Age"],
-                        Id = (int)reader["Id"]
 
                     });
                 }
                 return people;
             }
+        }
+        public void AddPeople(List<Person> people)
+        {
+            foreach (Person p in people)
+            {
+                using (SqlConnection conn = new SqlConnection(_connection))
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"insert into People(FirstName, LastName, Age)
+                                       values(@FirstName,@LastName,@Age)";
+                    cmd.Parameters.AddWithValue("@FirstName", p.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", p.LastName);
+                    cmd.Parameters.AddWithValue("@Age", p.Age);
 
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
 
         }
     }
