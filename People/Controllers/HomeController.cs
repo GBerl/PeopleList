@@ -22,6 +22,7 @@ namespace People.Controllers
         {
             return View();
         }
+        [HttpPost]
         public IActionResult AddMorePeople(List<Person> people)
         {
             Peopledb db = new Peopledb(_connection);
